@@ -5,7 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 const corsOptions = {
-  origin: ['http://localhost:8080', 'https://e-baron.github.io', 'https://kevish-gawri-vinci.github.io/'],
+  origin: ['http://localhost:8080', 'https://e-baron.github.io', 'https://kevish-gawri-vinci.github.io/Zero-G-Odyssey'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],

@@ -26,6 +26,7 @@ const swaggerOptions = {
       { url: 'http://localhost:3000' },
       { url: 'https://kevish-gawri-vinci.github.io/Zero-G-Odyssey' },
       { url: 'https://kevish-gawri-vinci.github.io' },
+      { url: 'https://zero-g-odyssey.azurewebsites.net' },
     ],
   },
   apis: ['./routes/*.js'],

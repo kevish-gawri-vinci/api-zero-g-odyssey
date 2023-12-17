@@ -1,70 +1,82 @@
-@baseUrl = http://localhost:3000
+######### NORMAL OPERATION  ###########
 
-### Tyry to update a score
-POST {{baseUrl}}/users/update-score
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtldjIiLCJpYXQiOjE3MDI2NTQzODYsImV4cCI6MTc4OTA1NDM4Nn0.CSEwaOLaFNz6mKYAs1p68gVbbGbrxPyd8sVekEsTS-Y
+@baseUrl = http://localhost:3000/users
+@username = Max
+@skinName = skin1
+@skinNumber = 1
+@starsToAdd = 10
+@newScore = 100
 
-{
-    "newScore":10,
-    "username":"kev2"
-}
+### Get All Users
+GET {{baseUrl}}/
 
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjI4OTkzOSwiZXhwIjoxNzg4Njg5OTM5fQ.1NObUWo01HtBWlGNCLBEpod-U2LAATZ51ByAtO4H8o8
-### Try to update a score
-POST {{baseUrl}}/users/update-score
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjI4OTkzOSwiZXhwIjoxNzg4Njg5OTM5fQ.1NObUWo01HtBWlGNCLBEpod-U2LAATZ51ByAtO4H8o8
-Content-Type: application/json
+### Get All Skins
+GET {{baseUrl}}/get-skins
 
-{
-    "newScore": 10
-}
-###2
-GET {{baseUrl}}/users/
+### Get Current Skin of a User
+GET {{baseUrl}}/current-skin/{{username}}
 
-### Unlock a skin
+### Get Balance of a User
+GET {{baseUrl}}/get-balance/{{username}}
 
-POST {{baseUrl}}/users/unlock-skin
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtldjMiLCJpYXQiOjE3MDI1NjAxMjUsImV4cCI6MTc4ODk2MDEyNX0.J9d182LTJiJV0uJmtYHKBxt-G-ZE0WBXdzMn12gLKZA
-Content-Type: application/json
-    
-{
-    "skinName": "skin5"
-}
-
-### Is Skin unlocked
-
-GET {{baseUrl}}/users/check-skin/fff/skin4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZmZiIsImlhdCI6MTcwMjM4ODIzNywiZXhwIjoxNzg4Nzg4MjM3fQ.nKHR4p3WbIB85zMWgB0aOPt93USJmcPuTNBlTFYzApI
-
-### Equip skin
-
-POST {{baseUrl}}/users/change-current-skin
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtldjIiLCJpYXQiOjE3MDI2NTQzODYsImV4cCI6MTc4OTA1NDM4Nn0.CSEwaOLaFNz6mKYAs1p68gVbbGbrxPyd8sVekEsTS-Y
-
-{
-    "skinNumber": 4
-}
-
-### Get All skins
-GET {{baseUrl}}/users/get-skins
+### Update Score of a User
+PATCH {{baseUrl}}/update-score
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjgyODgyMywiZXhwIjoxNzg5MjI4ODIzfQ.gB6rxyC_a4ubeUNIJTYCnFCpXY-QrIlixMb0Dbog_Ps
 Content-Type: application/json
 
-### Get current skin
-GET {{baseUrl}}/users/current-skin/kev3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtldjMiLCJpYXQiOjE3MDI1NjAxMjUsImV4cCI6MTc4ODk2MDEyNX0.J9d182LTJiJV0uJmtYHKBxt-G-ZE0WBXdzMn12gLKZA
-Content-Type: application/json 
+{
+    "newScore": {{newScore}}
+}
 
-### Get current skin
-GET {{baseUrl}}/users/get-balance/kev3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtldjMiLCJpYXQiOjE3MDI1NjAxMjUsImV4cCI6MTc4ODk2MDEyNX0.J9d182LTJiJV0uJmtYHKBxt-G-ZE0WBXdzMn12gLKZA
-Content-Type: application/json 
-
-### Add stars
-POST {{baseUrl}}/users/add-stars
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtldjIiLCJpYXQiOjE3MDI2NTQzODYsImV4cCI6MTc4OTA1NDM4Nn0.CSEwaOLaFNz6mKYAs1p68gVbbGbrxPyd8sVekEsTS-Y
-Content-Type: application/json 
+### Add Stars to a User
+PATCH {{baseUrl}}/add-stars
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjc2ODU1NywiZXhwIjoxNzg5MTY4NTU3fQ.LpBGhfd1rYNGIH7UpqOdWjtMzmO41MZD4bLsZ2qFmiM
+Content-Type: application/json
 
 {
-    "stars": 10
+    "stars": {{starsToAdd}}
 }
+
+### Get Users Leaderboard
+GET {{baseUrl}}/classement
+
+### Unlock a Skin for a User
+PATCH {{baseUrl}}/unlock-skin
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjc2ODU1NywiZXhwIjoxNzg5MTY4NTU3fQ.LpBGhfd1rYNGIH7UpqOdWjtMzmO41MZD4bLsZ2qFmiM
+Content-Type: application/json
+
+{
+    "skinName": "{{skinName}}"
+}
+
+### Check if a User has a Skin
+GET {{baseUrl}}/check-skin/{{username}}/{{skinName}}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjc2ODU1NywiZXhwIjoxNzg5MTY4NTU3fQ.LpBGhfd1rYNGIH7UpqOdWjtMzmO41MZD4bLsZ2qFmiM
+
+
+### Change Current Skin of a User
+PATCH {{baseUrl}}/change-current-skin
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjc2ODU1NywiZXhwIjoxNzg5MTY4NTU3fQ.LpBGhfd1rYNGIH7UpqOdWjtMzmO41MZD4bLsZ2qFmiM
+Content-Type: application/json
+
+{
+    "skinNumber": {{skinNumber}}
+}
+
+### WRONG OPERATONS
+
+### Unlock a Skin for a User
+### Should fail because skin is already owned
+POST {{baseUrl}}/unlock-skin
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjc2ODU1NywiZXhwIjoxNzg5MTY4NTU3fQ.LpBGhfd1rYNGIH7UpqOdWjtMzmO41MZD4bLsZ2qFmiM
+Content-Type: application/json
+
+{
+    "skinName": "{{skinName}}"
+}
+
+### Check if a User has a Skin
+### Should fail because skin isn't owned
+GET {{baseUrl}}/check-skin/{{username}}/skin5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1heCIsImlhdCI6MTcwMjc2ODU1NywiZXhwIjoxNzg5MTY4NTU3fQ.LpBGhfd1rYNGIH7UpqOdWjtMzmO41MZD4bLsZ2qFmiM
+

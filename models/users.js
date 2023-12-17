@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const path = require('node:path');
 const { parse, serialize } = require('../utils/json');
 
-const jwtSecret = 'ilovemypizza!';
+const jwtSecret = 'odysseysecret';
 const lifetimeJwt = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
 
 const saltRounds = 10;
@@ -14,10 +14,10 @@ const skinsDb = path.join(__dirname, '/../data/skins.json');
 const defaultUsers = [
   {
     id: 1,
-    username: 'admin',
-    password: bcrypt.hashSync('admin', saltRounds),
+    username: 'user1',
+    password: bcrypt.hashSync('ueser1', saltRounds),
     birthdate: '1990-01-01',
-    score: 0,
+    bestscore: 0,
     skin1: false,
     skin2: false,
     skin3: false,

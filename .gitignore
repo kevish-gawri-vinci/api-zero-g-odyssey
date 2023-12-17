@@ -1,4 +1,4 @@
-# # ignore all node_modules folders and nested folders & files
+# ignore all node_modules folders and nested folders & files
 node_modules
 # ignore the specific VS Code configuration parameters
 # .vscode

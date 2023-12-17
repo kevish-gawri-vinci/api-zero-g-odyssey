@@ -1,39 +1,68 @@
-@baseUrl = http://localhost:3000
+######### NORMAL OPERATION  ###########
 
-### Try to login an unknow user
-POST {{baseUrl}}/auths/login
+@baseUrl = http://localhost:3000/auths
+
+### Register a User
+POST {{baseUrl}}/register
 Content-Type: application/json
 
 {
-    "username":"unknown",
-    "password":"admin"
+    "username": "newUser",
+    "password": "Password123",
+    "birthdate": "2000-01-01"
 }
 
-### Login the default admin
-POST {{baseUrl}}/auths/login
+### Login a User
+POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "password":"admin"
+    "username": "newUser",
+    "password": "Password123"
 }
 
+### WRONG OPERATION
 
-### Create the manager user
-POST {{baseUrl}}/auths/register
+### Register a User 
+### Should fail because birthdate is missing
+POST {{baseUrl}}/register
 Content-Type: application/json
 
 {
-    "username":"test7",
-    "password":"test7",
-    "birthdate":"01-01-2000"
+    "username": "userWithoutBirthdate",
+    "password": "password123"
 }
 
-### Login the manager user
-POST {{baseUrl}}/auths/login
+### Register a User 
+### Should fail because newUser is already taken
+
+POST {{baseUrl}}/register
 Content-Type: application/json
 
 {
-    "username":"manager",
-    "password":"manager"
+    "username": "newUser",
+    "password": "Password123",
+    "birthdate": "2000-01-01"
+}
+
+### Register a User 
+### Should fail because password isn't strong enough 
+
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+    "username": "newUser",
+    "password": "password123",
+    "birthdate": "2000-01-01"
+}
+
+### Login with Wrong Credentials
+### Should fail because password is wrong
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "username": "newUser",
+    "password": "Password1234"
 }
